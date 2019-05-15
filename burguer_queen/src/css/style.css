@@ -50,6 +50,10 @@ body {
       transition: all 0.3s ease-in-out;
       cursor: pointer;
   }
+  .nav-menu__link.active {
+      background-color: aquamarine;
+
+  }
 
   .logo-link{
       color: #fff;

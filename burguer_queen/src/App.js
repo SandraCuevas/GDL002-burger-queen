@@ -3,15 +3,19 @@ import {BrowserRouter,Route} from 'react-router-dom';
 import './css/style.css'
 //import './App.css';
 import Navbar from './components/navbar';
-import Home from './components/home'
+import Home from './components/home';
+import Menu from './components/menu';
+import Kitchen from './components/kitchen';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Navbar title="The tea shop"/>
-        <Route to ="/" render={()=><Home title="Suggestions"/>} />
-        {/*<Home title="Suggestions"/>*/}
+        <Route exact path ="/" render={()=><Home title="Suggestions"/>} />
+        <Route path ="/menu" component={Menu} />
+        <Route path ="/kitchen" component={Kitchen} />
+        
       </div>
     </BrowserRouter>
   );

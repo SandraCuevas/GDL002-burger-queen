@@ -1,0 +1,22 @@
+[
+    {
+        "Product": "COFFE",
+        "Flavor": null,
+        "Price": "$5",
+        "Image": ""
+    },
+    {
+        "Product": "TEA",
+        "Flavor": null,
+        "Price": "$7",
+        "Image": ""
+    },
+    
+    {
+        "Product": "TEA",
+        "Flavor": null,
+        "Price": "$7",
+        "Image": ""
+    }
+
+]
