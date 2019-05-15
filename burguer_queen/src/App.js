@@ -1,21 +1,19 @@
 import React from 'react';
+import {BrowserRouter,Route} from 'react-router-dom';
 import './css/style.css'
-import './App.css';
+//import './App.css';
+import Navbar from './components/navbar';
+import Home from './components/home'
 
 function App() {
   return (
-    <div className="App">
-      <nav>
-        <h2 class="logo"><a class="logo-link" href="#">THE TEA SHOP</a></h2>
-        <ul class="nav-menu">
-          <li><a class="nav-menu__link" href="#">ORDER</a></li>
-          <li><a class="nav-menu__link" href="#">KITCHEN</a></li>
-          <li><a class="nav-menu__link" href="#">LOGOUT</a></li>
-
-        </ul>
-      </nav>
-     
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar title="The tea shop"/>
+        <Route to ="/" render={()=><Home title="Suggestions"/>} />
+        {/*<Home title="Suggestions"/>*/}
+      </div>
+    </BrowserRouter>
   );
 }
 

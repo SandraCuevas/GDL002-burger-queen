@@ -22,7 +22,7 @@ body {
 
   nav {
       display: flex;
-      justify-content: space-between; 
+      justify-content: space-between;
       border-bottom: 1px solid gray;
       background-color: rgb(204, 203, 203);
       padding: 10px 20px;
@@ -54,3 +54,51 @@ body {
   .logo-link{
       color: #fff;
   }
+
+
+  .main-content{
+      width: 90%;
+      margin: center;
+      padding-bottom: 50px;
+
+  }
+
+  .main-content h2{
+     text-align: end;
+     margin-bottom: 20px;
+ }
+
+ .home-image{
+    width:760px;
+    height: 300px;
+    background-image: url('https://i.pinimg.com/originals/b4/b9/aa/b4b9aa0ca93e9687a1d3b3ae1982cecc.jpg');
+    background-size: cover;
+    margin-bottom: 50px;
+}
+
+ 
+ .thumbnail-container {
+     display: flex;
+     justify-content: space-around;
+     margin-bottom: 50px;
+     width: 100%;
+ }
+
+ .home-thumbnail-1,
+ .home-thumbnail-2,
+ .home-thumbnail-3{
+     background-size: cover;
+     width: 200px;
+     height: 100px;
+ }
+
+ .home-thumbnail-1 {
+     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvNFvisvJ-l48Cvw6tQmZ-AeFAvBPJ2-05sL_Ssmt8Pr4LyTq-Kw');
+ }
+
+ .home-thumbnail-2 {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr4hTpkZ6TcbqImjmTZy5F7_byRZHe1AJk_me48qNck2yMEr-tqw');
+}
+ .home-thumbnail-3{
+    background-image: url('https://www.fiufiu.com.mx/wp-content/uploads/2018/04/Chamomileteafeatureimage.jpg');
+}
