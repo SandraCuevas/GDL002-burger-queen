@@ -1,4 +1,5 @@
 import React from 'react';
+
 const Kitchen = (props) => (
     <div className="main-content">
         <div className="container">

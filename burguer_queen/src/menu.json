@@ -1,0 +1,67 @@
+{
+        "menu":
+
+
+    [
+        {
+            "Item": "COFFE",
+            "Price": "6.00",
+            "Type": "drinks"
+        },
+        {
+            "Item": "TEA",
+            "Price": "5.00",
+            "Type": "drinks"
+        },
+
+        {
+            "Item": "SODA",
+            "Price": "8.00",
+            "Type": "drinks"
+        },
+
+        {
+            "Item": "TISANE",
+            "Price": "7.00",
+            "Type": "drinks"
+        },
+
+        {
+            "Item": "SANDWICH",
+            "Price": "10.00",
+            "Type": "meals"
+        },
+
+        {
+            "Item": "BAGUEL",
+            "Price": "12.00",
+            "Type": "meals"
+        },
+
+        {
+            "Item": "BURGUER",
+            "Price": "15.00",
+            "Type": "meals"
+        },
+
+        {
+            "Item": "BONELESS",
+            "Price": "13.00",
+            "Type": "meals"
+        },
+
+        {
+            "Item": "CHIPS",
+            "Price": "3.00",
+            "Type": "sides"
+        },
+
+        {
+            "Item": "SALAD",
+            "Price": "4.00",
+            "Type": "sides"
+        }
+
+    ]
+
+}
