@@ -4,62 +4,62 @@
 
     [
         {
-            "Item": "COFFE",
-            "Price": "6.00",
-            "Type": "drinks"
+            "item": "COFFE",
+            "price": "6.00",
+            "type": "drinks"
         },
         {
-            "Item": "TEA",
-            "Price": "5.00",
-            "Type": "drinks"
-        },
-
-        {
-            "Item": "SODA",
-            "Price": "8.00",
-            "Type": "drinks"
+            "item": "TEA",
+            "price": "5.00",
+            "type": "drinks"
         },
 
         {
-            "Item": "TISANE",
-            "Price": "7.00",
-            "Type": "drinks"
+            "item": "SODA",
+            "price": "8.00",
+            "type": "drinks"
         },
 
         {
-            "Item": "SANDWICH",
-            "Price": "10.00",
-            "Type": "meals"
+            "item": "TISANE",
+            "price": "7.00",
+            "type": "drinks"
         },
 
         {
-            "Item": "BAGUEL",
-            "Price": "12.00",
-            "Type": "meals"
+            "item": "SANDWICH",
+            "price": "10.00",
+            "type": "meals"
         },
 
         {
-            "Item": "BURGUER",
-            "Price": "15.00",
-            "Type": "meals"
+            "item": "BAGUEL",
+            "price": "12.00",
+            "type": "meals"
         },
 
         {
-            "Item": "BONELESS",
-            "Price": "13.00",
-            "Type": "meals"
+            "item": "BURGUER",
+            "price": "15.00",
+            "type": "meals"
         },
 
         {
-            "Item": "CHIPS",
-            "Price": "3.00",
-            "Type": "sides"
+            "item": "BONELESS",
+            "price": "13.00",
+            "type": "meals"
         },
 
         {
-            "Item": "SALAD",
-            "Price": "4.00",
-            "Type": "sides"
+            "item": "CHIPS",
+            "price": "3.00",
+            "type": "sides"
+        },
+
+        {
+            "item": "SALAD",
+            "price": "4.00",
+            "type": "sides"
         }
 
     ]
