@@ -1,43 +1,48 @@
 import React, {Component} from 'react';
+import firebase from '../firebase/fbStart';
+//import  {menu}  from '../menu.json'
 
-import  {menu}  from '../menu.json'
-
-class ShowMenu extends Component {
-    constructor(props){
-        super(props);
+class ShowMenuFb extends Component {
+    constructor(){
+        super();
         this.state = {
-           orders:[]
+            menu:[],
+            orders:[]
+
+        };
+};
+
+componentDidMount(){
+    const RefMenu = firebase.database().ref('menu');
+    RefMenu.on('value', (snapshot) =>{
+        let menu1= snapshot.val();
+        let newStateMenu = [];
+
+        for (let menu2 in menu1){
+            newStateMenu.push({
+                item: menu1[menu2].item,
+                price: menu1[menu2].price,
+                type: menu1[menu2].type
+            });
         }
-         this.submit = this.submit.bind(this);
+        this.setState({
+            menu: newStateMenu
+        });
+    });
 }
 
-submit(nameItem, price){
-    //console.log(nameItem, price)
-    //console.log('props', this.props.addOrders)
-     const orders = this.state.orders;
- 
-     const order = {
-       item: nameItem,
-       price: price
-     }
- 
-     orders.push(order);
-     this.props.addOrders(this.state.orders);
-     }
- 
 
 
 
      render(){
-
         return(
    
             <div className="main-content">
                 <div className="container">
-                    <h2> MENUS </h2>
-                        <div class="row">
+                    <h2> MENU </h2>
+                        <div className="row">
                             <div className="col">
-                                MENU
+                                OPTIONS
                         </div>
                         <div className="col">
                                 ORDER
@@ -45,11 +50,12 @@ submit(nameItem, price){
                         <div className="w-100">
                             <div className="col-md-6">
                             
-                                {menu.map((menuDetail, index)=>
-                                    <div className="list-group list-group-flush col mt-4"  key={index}>
-                                        <button className="list-group-item">
+                                {this.state.menu.map((menuDetail)=>
+                                    <div className="list-group list-group-flush col mt-4" >
+                                    
+                                        <button className="list-group-item" >
                                             <h5 className="card-title">{menuDetail.item}</h5>
-                                            <p className="card-text">{menuDetail.price}</p>
+                                            <p className="card-text">{'$'+ menuDetail.price}</p>
                                         </button>
                                     </div>
                                     )
@@ -59,6 +65,7 @@ submit(nameItem, price){
                             <div className="w-100"></div>
                         </div>
                     </div>
+                    
         
 
                 </div>
@@ -70,4 +77,4 @@ submit(nameItem, price){
         
     }
 
-    export default ShowMenu;
+    export default ShowMenuFb;
