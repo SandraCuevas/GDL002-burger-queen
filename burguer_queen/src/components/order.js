@@ -1,76 +1,46 @@
 
 import React, {Component} from 'react';
-import ClientName from './clientName';
+//import ClientName from './clientName';
 import Menu from './menu';
-import {Link}from 'react-router-dom';
 
-class ComandFood extends Component {
+class OrderItems extends Component {
     constructor(props){
         super(props);
         this.state= {
-          ordersFood:[],
+          orders:[],
           value:''
         }
-        this.addName = this.addName.bind(this);
-        this.addOrdersFood = this.addOrdersFood.bind(this);
-
-
-     }
-
-
-
-addName(value){
-this.setState({
-  value
-});
+        this.addOrders = this.addOrders.bind(this);
 
 }
 
-  addOrdersFood(ordersFood){
-    console.log(this.state.ordersFood)
+  addOrders(orders){
+    console.log(this.state.orders)
 
     this.setState({
-      ordersFood
+      orders
     });
 
   }
 
-  removeRow = (event, index) => {
-        event.preventDefault();
-        this.state.ordersFood.splice(index, 1);
-        this.setState({div:this.state.ordersFood});
-    }
-
+  
 render(){
  return(
 
- <div>
-      <div>
-          <Link to="/comandBreakfast" className="link">Desayuno.</Link>
-          <Link to="/" className="link">Salir.</Link>
-
-        <div>
-
-          <div>
-          <NameForm  addName={this.addName} />
-          </div>
+     <div>
 
                 <div >
                               <div>
-                              <Food addOrdersFood={this.addOrdersFood}/>
+                              <Menu addOrders={this.addOrders}/>
                               </div>
                 </div>
 
-       </div>
-
-
-
-       <div>
+       <div></div>
 
               <div><h5>Mesero: <span >{this.state.value}</span></h5></div>
 
            <div>
-           {this.state.ordersFood.map((orders, index) =>
+           {this.state.orders.map((orders, index) =>
                   <div key={index}>
                    <div>Comida {orders.item}</div>
                     <div>Precio {orders.price}</div>
@@ -79,16 +49,14 @@ render(){
                 )}
 
            </div>
-           </div>
-
-           </div>
-
-
+           
     </div>
-  );
+           
+
+     );
+
+    }
 
 }
 
-}
-
-export default ComandFood;
+export default OrderItems;

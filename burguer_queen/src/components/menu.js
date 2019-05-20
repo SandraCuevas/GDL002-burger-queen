@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import firebase from '../firebase/fbStart';
 import  Counter  from './counter';
+//import Order from './order';
 //import Items from './components/items';
 //import  {menu}  from '../menu.json'
 
@@ -10,18 +11,17 @@ class ShowMenuFb extends Component {
         this.state = {
             menu:[],
             orders:[]
-
         };
-       // this.submit = this.submit.bind(this);
+        this.submit = this.submit.bind(this);
 };
 
-submit(nameItem, price){
-    //console.log(nameItem, price)
+submit(item, price){
+    console.log(item, price)
     //console.log('props', this.props.addOrders)
      const orders = this.state.orders;
  
      const order = {
-       item: nameItem,
+       item: item,
        price: price
      }
  
@@ -29,6 +29,17 @@ submit(nameItem, price){
      this.props.addOrders(this.state.orders);
      }
  
+
+    
+      addOrders(orders){
+        console.log(this.state.orders)
+    
+        this.setState({
+          orders
+        });
+    
+      }
+    
 
 componentDidMount(){
     const RefMenu = firebase.database().ref('menu');
@@ -71,9 +82,9 @@ componentDidMount(){
                                 {this.state.menu.map((menuDetail)=>
                                     <div className="list-group list-group-flush col mt-4" >
                                     
-                                        <button className="list-group-item" /*onClick={()=>{
-                                            this.submit(menuDetail.name, menuDetail.price);
-                                                }} type="submit"*/>  
+                                        <button className="list-group-item" onClick={()=>{
+                                            this.submit(menuDetail.item, menuDetail.price);
+                                                }} type="submit">  
                                             <h5 className="card-title">{menuDetail.item}</h5>
                                             <p className="card-text">{'$'+ menuDetail.price}</p>
                                             <Counter/>
@@ -81,6 +92,7 @@ componentDidMount(){
                                     </div>
                                     )
                                 }
+                               {/* <MenuDetail menuList={this.state.menu} otro={otro}/>*/}
                             </div>
                             <div className="col">
                             
