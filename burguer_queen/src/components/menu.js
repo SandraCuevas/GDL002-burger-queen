@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import firebase from '../firebase/fbStart';
 import  Counter  from './counter';
-//import Order from './order';
+import Order from './order';
 //import Items from './components/items';
 //import  {menu}  from '../menu.json'
 
@@ -18,19 +18,17 @@ class ShowMenuFb extends Component {
 submit(item, price){
     //console.log(item, price)
     //console.log('props', this.props.addOrders)
-     const orders = this.state.orders;
-     
+     //const orders = this.state.orders;
      const order = {
        item: item,
        price: price
-     }
-     this.setState({
-         orders:[...this.state.orders,order]
+        }
+        this.setState({
+            orders:[...this.state.orders,order]
 
-     })
-     }
-    
-    
+        })
+     };
+      
 
 componentDidMount(){
     const RefMenu = firebase.database().ref('menu');
@@ -51,9 +49,6 @@ componentDidMount(){
     });
 }
 
-
-
-
      render(){
         console.log(this.state.orders) 
         return(
@@ -69,10 +64,11 @@ componentDidMount(){
                                 ORDER
                         </div>
                         <div className="w-100">
+                        
                             <div className="col-md-6">
-                            
-                                {this.state.menu.map((menuDetail)=>
-                                    <div className="list-group list-group-flush col mt-4" >
+    
+                                {this.state.menu.map((menuDetail,i)=>
+                                    <div key = {i} className="list-group list-group-flush col mt-4" >
                                     
                                         <button className="list-group-item" onClick={()=>{
                                             this.submit(menuDetail.item, menuDetail.price);
@@ -91,13 +87,10 @@ componentDidMount(){
                             
                             </div>
                             <div className="w-100"></div>
+                            <Order menuList={this.state.orders}/>
                         </div>
                     </div>
-                    
-        
-
-                </div>
-                
+                </div>          
             </div>
         );
     
