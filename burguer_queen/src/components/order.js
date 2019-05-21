@@ -1,62 +1,24 @@
+import React from "react";
 
-import React, {Component} from 'react';
-//import ClientName from './clientName';
-import Menu from './menu';
-
-class OrderItems extends Component {
-    constructor(props){
-        super(props);
-        this.state= {
-          orders:[],
-          value:''
-        }
-        this.addOrders = this.addOrders.bind(this);
-
+const Order = props => {
+    return (
+        <div>
+            <ul className="list-group col-md-12">
+                <li className="list-group-item d-flex justify-content-between align-items-center col-md-6">
+                    Cras justo odio
+                    <span className="badge badge-primary badge-pill">14</span>
+                </li>
+                <li className="list-group-item d-flex justify-content-between align-items-center col-md-6">
+                    Dapibus ac facilisis in
+                    <span className="badge badge-primary badge-pill">2</span>
+                </li>
+                <li className="list-group-item d-flex justify-content-between align-items-center col-md-6">
+                    Morbi leo risus
+                    <span className="badge badge-primary badge-pill">1</span>
+                </li>
+            </ul>
+        </div>
+    )
 }
 
-  addOrders(orders){
-    console.log(this.state.orders)
-
-    this.setState({
-      orders
-    });
-
-  }
-
-  
-render(){
- return(
-
-     <div>
-
-                <div >
-                              <div>
-                              <Menu addOrders={this.addOrders}/>
-                              </div>
-                </div>
-
-       <div></div>
-
-              <div><h5>Mesero: <span >{this.state.value}</span></h5></div>
-
-           <div>
-           {this.state.orders.map((orders, index) =>
-                  <div key={index}>
-                   <div>Comida {orders.item}</div>
-                    <div>Precio {orders.price}</div>
-                    <button  onClick={(event) => this.removeRow(event, index)}>eliminar</button>
-                  </div>
-                )}
-
-           </div>
-           
-    </div>
-           
-
-     );
-
-    }
-
-}
-
-export default OrderItems;
+export default Order;

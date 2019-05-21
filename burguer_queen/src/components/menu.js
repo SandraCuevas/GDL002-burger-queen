@@ -12,33 +12,24 @@ class ShowMenuFb extends Component {
             menu:[],
             orders:[]
         };
-        this.submit = this.submit.bind(this);
+        //this.submit = this.submit.bind(this);
 };
 
 submit(item, price){
-    console.log(item, price)
+    //console.log(item, price)
     //console.log('props', this.props.addOrders)
      const orders = this.state.orders;
- 
+     
      const order = {
        item: item,
        price: price
      }
- 
-     orders.push(order);
-     this.props.addOrders(this.state.orders);
-     }
- 
+     this.setState({
+         orders:[...this.state.orders,order]
 
+     })
+     }
     
-      addOrders(orders){
-        console.log(this.state.orders)
-    
-        this.setState({
-          orders
-        });
-    
-      }
     
 
 componentDidMount(){
@@ -64,6 +55,7 @@ componentDidMount(){
 
 
      render(){
+        console.log(this.state.orders) 
         return(
    
             <div className="main-content">
@@ -85,9 +77,10 @@ componentDidMount(){
                                         <button className="list-group-item" onClick={()=>{
                                             this.submit(menuDetail.item, menuDetail.price);
                                                 }} type="submit">  
+                                                
                                             <h5 className="card-title">{menuDetail.item}</h5>
                                             <p className="card-text">{'$'+ menuDetail.price}</p>
-                                            <Counter/>
+                                            {/*<Counter/>*/}
                                         </button>
                                     </div>
                                     )

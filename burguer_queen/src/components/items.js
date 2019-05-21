@@ -7,13 +7,12 @@ const Items = (props) => (
             <div className="row">
                 <div className="col">
                     OPTIONS
-            </div>
-            <div className="col">
-                    ORDER
-            </div>
+                </div>
+                <div className="col">
+                        ORDER
+                </div>
             <div className="w-100">
                 <div className="col-md-6">
-                
                     {this.state.menu.map((menuDetail)=>
                         <div className="list-group list-group-flush col mt-4" >
                         
@@ -30,11 +29,7 @@ const Items = (props) => (
                 </div>
             </div>
         </div>
-        
-
-
     </div>
-
 </div>
 );
 
