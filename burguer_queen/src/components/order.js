@@ -5,10 +5,11 @@ export class Order extends React.Component{
         const order = this.props.menuList.map((menu, i) => {
             return(
                 <div>
+                    
                     <ul key={i} className="list-group col-md-12">
                         <li className="list-group-item d-flex justify-content-between align-items-center col-md-12">
                             <p>{menu.item}</p>
-                            <span className="btn-success">{"$"+ menu.price}</span>
+                            <span>{"$"+ menu.price}</span>
                         </li>
                     </ul>
                 </div>

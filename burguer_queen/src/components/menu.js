@@ -1,87 +1,110 @@
 import React, {Component} from 'react';
 import firebase from '../firebase/fbStart';
-//import  Counter  from './counter';
 import Order from './order';
-//import Items from './components/items';
-//import  {menu}  from '../menu.json'
 
 class ShowMenuFb extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             menu:[],
-            orders:[]
+            orders:[],
+            total: 0,
         };
-        //this.submit = this.submit.bind(this);
-};
+        this.submit = this.submit.bind(this);
+        this.sumOrder = this.sumOrder.bind(this)
+    };   
 
-submit(item, price){
-    //console.log(item, price)
-    //console.log('props', this.props.addOrders)
-     //const orders = this.state.orders;
-     const order = {
-       item: item,
-       price: price
-        }
-        this.setState({
-            orders:[...this.state.orders,order]
+    componentDidMount(){
+        const refMenu = firebase.database().ref('menu');
+        refMenu.on('value', (snapshot) =>{
+            let menu1= snapshot.val();
+            let newStateMenu = [];
 
-        })
-     };
-      
-
-componentDidMount(){
-    const RefMenu = firebase.database().ref('menu');
-    RefMenu.on('value', (snapshot) =>{
-        let menu1= snapshot.val();
-        let newStateMenu = [];
-
-        for (let menu2 in menu1){
-            newStateMenu.push({
-                item: menu1[menu2].item,
-                price: menu1[menu2].price,
-                type: menu1[menu2].type
+            for (let menu2 in menu1){
+                newStateMenu.push({
+                    item: menu1[menu2].item,
+                    price: menu1[menu2].price,
+                    type: menu1[menu2].type
+                });
+            }
+            this.setState({
+                menu: newStateMenu
             });
-        }
-        this.setState({
-            menu: newStateMenu
         });
-    });
-}
+    }
+    submit(item, price){
+
+        const order = {
+        item: item,
+        price: price
+            }
+            this.setState({
+                orders:[...this.state.orders,order]
+
+            })
+        };
+    
+    sumOrder () {
+        const priceArr = this.state.orders.map((el) => el.price)
+        const items = priceArr.reduce((sum,result)=>{
+            return sum + result
+        });
+        this.setState({
+            total: this.state.total + items
+        });
+    };
+    
+    /*deleteSearchItem: function(e) {
+        const searchItemIndex = parseInt(e.target.value, 10);
+        console.log('remove task: %d', searchItemIndex);
+        this.setState(state => {
+            state.data.splice(searchItemIndex, 1);
+            return { data: state.data };
+        });
+      };*/
+        
+
 
      render(){
-        console.log(this.state.orders) 
         return(
    
             
                 <div className="container">
                     <h2>MENU</h2>
                         <div className="row"> 
-                            <div className="col">
+                                <div className="col">
                                             <h3>OPTIONS</h3>
-                                            <div className="col-md-12">
-                
-                                        {this.state.menu.map((menuDetail,i)=>
-                                            <div key = {i} className="list-group list-group-flush col mt-4" >
                                             
-                                                <button className="list-group-item" onClick={()=>{
-                                                    this.submit(menuDetail.item, menuDetail.price);
-                                                        }} type="submit">  
-                                                    <h5 className="card-title">{menuDetail.item}</h5>
-                                                    <p className="card-text">{'$'+ menuDetail.price}</p>
-                                                    {/*<Counter/>*/}
-                                                </button>
-                                            </div>
-                                            )
-                                        }
-                                    </div>
-                                    </div>  
+                                                {this.state.menu.map((menuDetail,i)=>
+                                                    <div key = {i} className="list-group list-group-flush col mt-4" >
+                                                    
+                                                        <button className="list-group-item" onClick={()=>{
+                                                            this.submit(menuDetail.item, menuDetail.price);
+                                                                } } type="submit"> 
+                                                            <li className="list-group-item d-flex justify-content-between align-items-center col-md-12"> 
+                                                            <p className="card-title">{menuDetail.item}</p>
+                                                            <span className="card-text">{'$'+ menuDetail.price}</span>
+                                                            </li>
+                                                        </button>
+                                                    </div>
+                                                    )
+                                                }
+                                </div>  
                                 <div className="col">
                                         <h3>ORDER</h3>
+                                        <form>
+                                        <label>
+                                            Client:
+                                            <input type="text" name="name" />
+                                            <input type="submit" value="Submit" />
+                                        </label>
                                         <Order menuList={this.state.orders}/>
+                                        </form>
+                                        <button onClick={this.sumOrder}>TOTAL: $ {this.state.total}</button>
+                                        <p></p>
                                 </div>  
                     
-                    </div>
+                        </div>
                 </div>          
             
         );
