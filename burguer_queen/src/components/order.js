@@ -3,7 +3,9 @@ import React from "react";
 // Stateful o Smart Component
 // los que son arrow function son Stateless o Dumb Components
 export class Order extends React.Component {
-
+    deleteItem = (e, i) => {
+        this.props.handleDelete(e, i)
+    }
    
   render(){
     console.log(this.props.menuList)
