@@ -12,7 +12,6 @@ class ShowMenuFb extends Component {
             kitchen:[]
         };
         this.submit = this.submit.bind(this);
-        this.deleteRow = this.deleteRow.bind(this);
         this.sumOrder = this.sumOrder.bind(this)
     };   
 
@@ -46,14 +45,8 @@ class ShowMenuFb extends Component {
             })
         };
     
-        deleteRow(e, menu) {
-            e.preventDefault(e)
-            this.setState(prevState => ({
-                orders: prevState.orders.filter(element => element != menu )
-            }));
-          }
-
     sumOrder () {
+        const initialValue = 0
         const priceArr = this.state.orders.map((el) => el.price)
         const items = priceArr.reduce((sum,result)=>{
             return sum + result;
@@ -62,20 +55,6 @@ class ShowMenuFb extends Component {
             total: items
         });
     };
-
-    /*addKitchen = id =>{
-        let tempOrder = [...this.state.orders];
-        const index = tempOrder.indexOf(this.state.orders(id));
-        const item = tempOrder[index];
-        item.inKitchen = true;
-        item.count = 1;
-        const price = item.price;
-        item.total = price;
-        this.setState(()=>{
-            return{orders:tempOrder,kitchen:[...this.state.kitchen, orders]}
-        },()=>(console.log(this.state)))
-
-    };*/
 
 
      render(){
@@ -111,7 +90,7 @@ class ShowMenuFb extends Component {
                                             <input type="text" name="name" />
                                             <input type="submit" value="Submit" />
                                         </label>
-                                        <Order menuList={this.state.orders} handleDelete={this.deleteRow}/>
+                                        <Order menuList={this.state.orders}/>
                                         </form>
                                         <button onClick={this.sumOrder}>TOTAL: $ {this.state.total}</button>
                                     
