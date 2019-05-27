@@ -9,7 +9,7 @@ class ShowMenuFb extends Component {
             menu:[],
             orders:[],
             total: 0,
-            kitchen:[]
+            //toKitchen:[]
         };
         this.submit = this.submit.bind(this);
         this.deleteRow = this.deleteRow.bind(this);
@@ -44,14 +44,14 @@ class ShowMenuFb extends Component {
                 orders:[...this.state.orders,order]
 
             })
-        };
+    };
     
-        deleteRow(e, menu) {
-            e.preventDefault(e)
-            this.setState(prevState => ({
-                orders: prevState.orders.filter(element => element != menu )
-            }));
-          }
+    deleteRow(e, menu) {
+        e.preventDefault(e)
+        this.setState(prevState => ({
+            orders: prevState.orders.filter(element => element !== menu )
+        }));
+    }
 
     sumOrder () {
         const priceArr = this.state.orders.map((el) => el.price)
@@ -83,7 +83,7 @@ class ShowMenuFb extends Component {
    
             
                 <div className="container">
-                    <h2>MENU</h2>
+                    <h2>LUNCH</h2>
                         <div className="row"> 
                                 <div className="col">
                                             <h3>OPTIONS</h3>

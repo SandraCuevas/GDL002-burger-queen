@@ -6,7 +6,7 @@ import Navbar from './components/navbar';
 import Home from './components/home';
 import Menu from './components/menu';
 import MenuBrunch from './components/menuBrunch';
-import Kitchen from './components/kitchen';
+//import Kitchen from './components/kitchen';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <Route exact path ="/" render={()=><Home title="Suggestions"/>} />
         <Route path ="/menu" component={Menu} />
         <Route path ="/menuBrunch" component={MenuBrunch} />
-        <Route path ="/kitchen" component={Kitchen} />
+        {/*<Route path ="/kitchen" component={Kitchen} />*/}
         
       </div>
     </BrowserRouter>

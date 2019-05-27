@@ -12,11 +12,12 @@ class ShowMenuFb extends Component {
             kitchen:[]
         };
         this.submit = this.submit.bind(this);
+        this.deleteRow = this.deleteRow.bind(this);
         this.sumOrder = this.sumOrder.bind(this)
     };   
 
     componentDidMount(){
-        const refMenu = firebase.database().ref('menu');
+        const refMenu = firebase.database().ref('menuTea');
         refMenu.on('value', (snapshot) =>{
             let menu1= snapshot.val();
             let newStateMenu = [];
@@ -45,8 +46,14 @@ class ShowMenuFb extends Component {
             })
         };
     
+        deleteRow(e, menu) {
+            e.preventDefault(e)
+            this.setState(prevState => ({
+                orders: prevState.orders.filter(element => element !== menu )
+            }));
+          }
+
     sumOrder () {
-        const initialValue = 0
         const priceArr = this.state.orders.map((el) => el.price)
         const items = priceArr.reduce((sum,result)=>{
             return sum + result;
@@ -56,13 +63,26 @@ class ShowMenuFb extends Component {
         });
     };
 
+    /*addKitchen = id =>{
+        let tempOrder = [...this.state.orders];
+        const index = tempOrder.indexOf(this.state.orders(id));
+        const item = tempOrder[index];
+        item.inKitchen = true;
+        item.count = 1;
+        const price = item.price;
+        item.total = price;
+        this.setState(()=>{
+            return{orders:tempOrder,kitchen:[...this.state.kitchen, orders]}
+        },()=>(console.log(this.state)))
+
+    };*/
+
 
      render(){
         return(
-   
-            
+
                 <div className="container">
-                    <h2>MENU</h2>
+                    <h2>BRUNCH</h2>
                         <div className="row"> 
                                 <div className="col">
                                             <h3>OPTIONS</h3>
@@ -90,7 +110,7 @@ class ShowMenuFb extends Component {
                                             <input type="text" name="name" />
                                             <input type="submit" value="Submit" />
                                         </label>
-                                        <Order menuList={this.state.orders}/>
+                                        <Order menuList={this.state.orders} handleDelete={this.deleteRow}/>
                                         </form>
                                         <button onClick={this.sumOrder}>TOTAL: $ {this.state.total}</button>
                                     
