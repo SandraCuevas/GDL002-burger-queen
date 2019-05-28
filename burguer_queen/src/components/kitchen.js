@@ -1,10 +1,16 @@
 import React,{Component} from 'react';
 import firebase from '../firebase/fbStart';
 
-export default class KitchenOrder extends Component {
-    state={
-        items:[]
-    };
+class KitchenOrder extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            menu:[],
+            orders:[],
+            total: 0
+            
+        };
+    };   
 
     componentDidMount(){
         const refOrder = firebase.database().ref('kitchenOrder');
@@ -25,7 +31,54 @@ export default class KitchenOrder extends Component {
         });
     }
 
+    submit(item, price){
 
-}
+        const order = {
+        item: item,
+        price: price
+            }
+            this.setState({
+                orders:[...this.state.orders,order]
+
+            })
+    }
+    render(){
+        return(
+   
+            
+                <div className="container">
+                    <h2>KITCHEN</h2>
+                        <div className="row"> 
+                                <div className="col">
+                                            <h3>ORDER</h3>
+                                            
+                                                {this.state.menu.map((menuDetail,i)=>
+                                                    <div key = {i} className="list-group list-group-flush col mt-4" >
+                                                    
+                                                        <button className="list-group-item" onClick={()=>{
+                                                            this.submit(menuDetail.item, menuDetail.price);
+                                                                } } type="submit"> 
+                                                            <li className="list-group-item d-flex justify-content-between align-items-center col-md-12"> 
+                                                            <p className="card-title">{menuDetail.item}</p>
+                                                            <span className="card-text">{'$'+ menuDetail.price}</span>
+                                                            </li>
+                                                        </button>
+                                                    </div>
+                                                    )
+                                                }
+                                </div>  
+                                
+                    
+                        </div>
+                </div>          
+            
+        );
+    
+        }
+        
+    }
+
+
+
 export default KitchenOrder;
 

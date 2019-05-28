@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import firebase from '../firebase/fbStart';
 import Order from './order';
+import ToKitchen from "./btnToKitchen";
+import ClientName from "./nameForm"
 
 class ShowMenuFb extends Component {
     constructor(props){
@@ -63,19 +65,7 @@ class ShowMenuFb extends Component {
         });
     };
 
-    /*addKitchen = id =>{
-        let tempOrder = [...this.state.orders];
-        const index = tempOrder.indexOf(this.state.orders(id));
-        const item = tempOrder[index];
-        item.inKitchen = true;
-        item.count = 1;
-        const price = item.price;
-        item.total = price;
-        this.setState(()=>{
-            return{orders:tempOrder,kitchen:[...this.state.kitchen, orders]}
-        },()=>(console.log(this.state)))
-
-    };*/
+   
 
 
      render(){
@@ -113,6 +103,7 @@ class ShowMenuFb extends Component {
                                         <Order menuList={this.state.orders} handleDelete={this.deleteRow}/>
                                         </form>
                                         <button onClick={this.sumOrder}>TOTAL: $ {this.state.total}</button>
+                                        <ToKitchen order={this.state.orders} ClientName={<ClientName/>} />
                                     
                                 </div>  
                     

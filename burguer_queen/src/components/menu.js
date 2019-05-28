@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import firebase from '../firebase/fbStart';
 import Order from './order';
+import ToKitchen from "./btnToKitchen";
+import ClientName from "./nameForm"
 
 class ShowMenuFb extends Component {
     constructor(props){
@@ -8,8 +10,8 @@ class ShowMenuFb extends Component {
         this.state = {
             menu:[],
             orders:[],
-            total: 0,
-            //toKitchen:[]
+            total: 0
+            
         };
         this.submit = this.submit.bind(this);
         this.deleteRow = this.deleteRow.bind(this);
@@ -44,8 +46,9 @@ class ShowMenuFb extends Component {
                 orders:[...this.state.orders,order]
 
             })
-    };
-    
+    }
+
+   
     deleteRow(e, menu) {
         e.preventDefault(e)
         this.setState(prevState => ({
@@ -63,19 +66,7 @@ class ShowMenuFb extends Component {
         });
     };
 
-    /*addKitchen = id =>{
-        let tempOrder = [...this.state.orders];
-        const index = tempOrder.indexOf(this.state.orders(id));
-        const item = tempOrder[index];
-        item.inKitchen = true;
-        item.count = 1;
-        const price = item.price;
-        item.total = price;
-        this.setState(()=>{
-            return{orders:tempOrder,kitchen:[...this.state.kitchen, orders]}
-        },()=>(console.log(this.state)))
-
-    };*/
+   
 
 
      render(){
@@ -107,13 +98,15 @@ class ShowMenuFb extends Component {
                                         <h3>ORDER</h3>
                                         <form>
                                         <label>
-                                            Client:
+                                            
                                             <input type="text" name="name" />
                                             <input type="submit" value="Submit" />
                                         </label>
                                         <Order menuList={this.state.orders} handleDelete={this.deleteRow}/>
                                         </form>
+                                        Client:
                                         <button onClick={this.sumOrder}>TOTAL: $ {this.state.total}</button>
+                                        <ToKitchen order={this.state.orders} ClientName={<ClientName/>} />
                                     
                                 </div>  
                     
