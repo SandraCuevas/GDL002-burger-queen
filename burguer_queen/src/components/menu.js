@@ -80,12 +80,12 @@ class ShowMenuFb extends Component {
                                             <h3>OPTIONS</h3>
                                             
                                                 {this.state.menu.map((menuDetail,i)=>
-                                                    <div key = {i} className="list-group list-group-flush col mt-4" >
+                                                    <div key = {i} className="list-group col mt-4" >
                                                     
                                                         <button className="list-group-item" onClick={()=>{
                                                             this.submit(menuDetail.item, menuDetail.price);
                                                                 } } type="submit"> 
-                                                            <li className="list-group-item d-flex justify-content-between align-items-center col-md-12"> 
+                                                            <li className="d-flex justify-content-between align-items-center col-md-12"> 
                                                             <p className="card-title">{menuDetail.item}</p>
                                                             <span className="card-text">{'$'+ menuDetail.price}</span>
                                                             </li>
@@ -98,14 +98,15 @@ class ShowMenuFb extends Component {
                                         <h3>ORDER</h3>
                                         <form>
                                         <label>
-                                            
+                                        Client:
                                             <input type="text" name="name" />
                                             <input type="submit" value="Submit" />
                                         </label>
                                         <Order menuList={this.state.orders} handleDelete={this.deleteRow}/>
                                         </form>
-                                        Client:
-                                        <button onClick={this.sumOrder}>TOTAL: $ {this.state.total}</button>
+                                        
+                                        <button className= "col-md-12" onClick={this.sumOrder}>TOTAL: $ {this.state.total}</button>
+                                        <br/>
                                         <ToKitchen order={this.state.orders} ClientName={<ClientName/>} />
                                     
                                 </div>  

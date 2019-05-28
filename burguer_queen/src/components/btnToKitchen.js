@@ -20,7 +20,7 @@ class toKitchen extends React.Component {
         return(
             <div className="container">
                 {console.log(this.props.order)}
-                <button type="submit" onClick={this.updOrderFb}>toKitchen</button>
+                <button className= "col-md-12"  type="submit" onClick={this.updOrderFb}>TO KITCHEN</button>
             </div>
         )
     }

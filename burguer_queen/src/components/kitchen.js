@@ -53,16 +53,15 @@ class KitchenOrder extends Component {
                                             <h3>ORDER</h3>
                                             
                                                 {this.state.menu.map((menuDetail,i)=>
-                                                    <div key = {i} className="list-group list-group-flush col mt-4" >
+                
+                                                    <div key = {i} className="list-group col mt-4" >
                                                     
-                                                        <button className="list-group-item" onClick={()=>{
-                                                            this.submit(menuDetail.item, menuDetail.price);
-                                                                } } type="submit"> 
-                                                            <li className="list-group-item d-flex justify-content-between align-items-center col-md-12"> 
+                                                        <div className="list-group-item" > 
+                                                            <li className="d-flex justify-content-between align-items-center col-md-12"> 
                                                             <p className="card-title">{menuDetail.item}</p>
                                                             <span className="card-text">{'$'+ menuDetail.price}</span>
                                                             </li>
-                                                        </button>
+                                                        </div>
                                                     </div>
                                                     )
                                                 }
