@@ -20,7 +20,24 @@ class toKitchen extends React.Component {
         return(
             <div className="container">
                 {console.log(this.props.order)}
-                <button className= "col-md-12"  type="submit" onClick={this.updOrderFb}>TO KITCHEN</button>
+                <button className= "col-md-12 btn btn-primary"  type="button" data-toggle="modal" data-target="#exampleModal" onClick={this.updOrderFb}>TO KITCHEN</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Send to Kitchen</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Your order is cooking right now!
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                        </div>
+                    </div>
+                    </div>
             </div>
         )
     }
