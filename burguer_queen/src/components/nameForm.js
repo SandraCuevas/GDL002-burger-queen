@@ -37,7 +37,7 @@ class input extends React.Component{
                 placeholder="Nombre del cliente" 
                 onChange={e => this.updateName('name', e.target.value)} 
                 required />
-            {/* <button type="submit" className="btn btn-success col-md-2">Enviar</button> */}
+                <button type="submit" className="btn btn-success col-md-2">Enviar</button>
             </div>
         </form> 
     )

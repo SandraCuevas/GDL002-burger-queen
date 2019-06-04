@@ -21,8 +21,7 @@ class KitchenOrder extends Component {
             for (let menu2 in menu1){
                 newStateMenu.push({
                     item: menu1[menu2].item,
-                    price: menu1[menu2].price,
-                    type: menu1[menu2].type
+                  
                 });
             }
             this.setState({
@@ -31,17 +30,7 @@ class KitchenOrder extends Component {
         });
     }
 
-    submit(item, price){
-
-        const order = {
-        item: item,
-        price: price
-            }
-            this.setState({
-                orders:[...this.state.orders,order]
-
-            })
-    }
+   
     render(){
         return(
    
