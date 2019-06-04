@@ -5,60 +5,65 @@ class KitchenOrder extends Component {
     constructor(props){
         super(props);
         this.state = {
-            menu:[],
-            orders:[],
-            total: 0
+            ordersKitch: [], 
+            counter: 0
             
         };
     };   
 
-    componentDidMount(){
-        const refOrder = firebase.database().ref('kitchenOrder');
-        refOrder.on('value', (snapshot) =>{
-            let menu1= snapshot.val();
-            let newStateMenu = [];
+    componentWillMount(){
+        function snapshotToArray(snapshot){
+            let orders = []
 
-            for (let menu2 in menu1){
-                newStateMenu.push({
-                    item: menu1[menu2].item,
-                  
-                });
-            }
-            this.setState({
-                menu: newStateMenu
+            snapshot.forEach(order => {
+                const items = order.val();
+                items.key = order.key;
+
+                orders.push(items)
             });
-        });
+            return orders
+        }
+        const dbFoodOrdersRef = firebase.database().ref();
+        const foodOrdersRef = dbFoodOrdersRef.child("kitchenOrder/");
+        foodOrdersRef.on("value", s=>{
+            const ordersForArray = snapshotToArray(s);
+            this.setState({
+                ordersKitch: ordersForArray
+            })
+        })
     }
+
+    deleteRow(e, orders) {
+        e.preventDefault(e)
+        this.setState(prevState => ({
+            ordersKitch: prevState.orders.filter(element => element !== orders )
+        }));
+      }
 
    
     render(){
         return(
    
             
-                <div className="container">
-                    <h2>KITCHEN</h2>
-                        <div className="row"> 
-                                <div className="col">
-                                            <h3>ORDER</h3>
-                                            
-                                                {this.state.menu.map((menuDetail,i)=>
-                
-                                                    <div key = {i} className="list-group col mt-4" >
-                                                    
-                                                        <div className="list-group-item" > 
-                                                            <li className="d-flex justify-content-between align-items-center col-md-12"> 
-                                                            <p className="card-title">{menuDetail.item}</p>
-                                                            <span className="card-text">{'$'+ menuDetail.price}</span>
-                                                            </li>
-                                                        </div>
-                                                    </div>
-                                                    )
-                                                }
-                                </div>  
-                                
-                    
-                        </div>
-                </div>          
+            <div class="card">
+            {this.state.ordersKitch.map((orders, i) =>
+            <div class="card-body">
+                <h5 class="card-title">Orden #{i+1}</h5>
+                <div>
+                    {orders.map((item, i)=>
+                    <div>
+                        <p class="card-text"></p>
+                        <a class="card-link">{item.item}</a>
+                        <a class="card-link">{item.price}</a>
+                        
+                    </div>
+                    )}
+                    <button id={i} onClick={(event)=> this.deleteRow(event, orders)}><i class="fas fa-trash-alt"></i></button>
+                </div>    
+                  
+            </div>
+            )}
+        </div>      
             
         );
     
