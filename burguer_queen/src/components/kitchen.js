@@ -54,7 +54,6 @@ class KitchenOrder extends Component {
                     <div>
                         <p class="card-text"></p>
                         <a class="card-link">{item.item}</a>
-                        <a class="card-link">{item.price}</a>
                         
                     </div>
                     )}
