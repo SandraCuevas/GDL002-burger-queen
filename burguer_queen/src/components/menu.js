@@ -10,8 +10,8 @@ class ShowMenuFb extends Component {
         this.state = {
             menu:[],
             orders:[],
-            total: 0
-            
+            total: 0,
+            kitchen:[]
         };
         this.submit = this.submit.bind(this);
         this.deleteRow = this.deleteRow.bind(this);
@@ -46,15 +46,14 @@ class ShowMenuFb extends Component {
                 orders:[...this.state.orders,order]
 
             })
-    }
-
-   
-    deleteRow(e, menu) {
-        e.preventDefault(e)
-        this.setState(prevState => ({
-            orders: prevState.orders.filter(element => element !== menu )
-        }));
-    }
+        };
+    
+        deleteRow(e, menu) {
+            e.preventDefault(e)
+            this.setState(prevState => ({
+                orders: prevState.orders.filter(element => element !== menu )
+            }));
+          }
 
     sumOrder () {
         const priceArr = this.state.orders.map((el) => el.price)
@@ -71,10 +70,9 @@ class ShowMenuFb extends Component {
 
      render(){
         return(
-   
-            
+
                 <div className="container">
-                    <h2>LUNCH</h2>
+                    <h2>BRUNCH</h2>
                         <div className="row"> 
                                 <div className="col">
                                             <h3>OPTIONS</h3>
@@ -98,16 +96,15 @@ class ShowMenuFb extends Component {
                                         <h3>ORDER</h3>
                                         <form>
                                         <label>
-                                        Client:
+                                            Client:
                                             <input type="text" name="name" />
                                             <input type="submit" value="Submit" />
                                         </label>
                                         <Order menuList={this.state.orders} handleDelete={this.deleteRow}/>
                                         </form>
-                                        
                                         <button className= "col-md-12" onClick={this.sumOrder}>TOTAL: $ {this.state.total}</button>
                                         <br/>
-                                        <ToKitchen ClientName={<ClientName/>} />
+                                        <ToKitchen order={this.state.orders} ClientName={<ClientName/>} />
                                     
                                 </div>  
                     

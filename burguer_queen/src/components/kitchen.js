@@ -12,7 +12,7 @@ class KitchenOrder extends Component {
     };   
 
     componentWillMount(){
-        function snapshotToArray(snapshot){
+        function snapshotArray(snapshot){
             let orders = []
 
             snapshot.forEach(order => {
@@ -26,7 +26,7 @@ class KitchenOrder extends Component {
         const dbFoodOrdersRef = firebase.database().ref();
         const foodOrdersRef = dbFoodOrdersRef.child("kitchenOrder/");
         foodOrdersRef.on("value", s=>{
-            const ordersArray = snapshotToArray(s);
+            const ordersArray = snapshotArray(s);
             this.setState({
                 ordersKitch: ordersArray
             })
@@ -53,11 +53,11 @@ class KitchenOrder extends Component {
                     {orders.map((item, i)=>
                     <div>
                         <p className="card-text"></p>
-                        <a className="card-link">{item.item}</a>
+                        <p className="card-link">{item.item}</p>
                         
                     </div>
                     )}
-                    <button id={i} onClick={(event)=> this.deleteRow(event, orders)}><i className="fas fa-check"></i></button>
+                    <button id={i} onClick={(event)=> this.deleteRow(event, orders)}><i className="fas fa-check col-md-12"></i></button>
                 </div>    
                   
             </div>
