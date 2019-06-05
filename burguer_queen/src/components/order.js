@@ -17,7 +17,7 @@ export class Order extends React.Component {
                         <li className="list-group-item d-flex justify-content-between align-items-center col-md-12">
                             <p>{menu.item}</p>
                             <span>{"$"+ menu.price}</span>
-                            <button id={i} onClick={(event)=> this.deleteItem(event, menu)}><i class="fas fa-trash-alt"></i></button>
+                            <button id={i} onClick={(event)=> this.deleteItem(event, menu)}><i className="fas fa-trash-alt"></i></button>
                         </li>
                     </ul>
                 </div>

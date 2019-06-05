@@ -26,9 +26,9 @@ class KitchenOrder extends Component {
         const dbFoodOrdersRef = firebase.database().ref();
         const foodOrdersRef = dbFoodOrdersRef.child("kitchenOrder/");
         foodOrdersRef.on("value", s=>{
-            const ordersForArray = snapshotToArray(s);
+            const ordersArray = snapshotToArray(s);
             this.setState({
-                ordersKitch: ordersForArray
+                ordersKitch: ordersArray
             })
         })
     }
@@ -36,7 +36,7 @@ class KitchenOrder extends Component {
     deleteRow(e, orders) {
         e.preventDefault(e)
         this.setState(prevState => ({
-            ordersKitch: prevState.orders.filter(element => element !== orders )
+            ordersKitch: prevState.ordersKitch.filter(element => element !== orders )
         }));
       }
 
@@ -45,19 +45,19 @@ class KitchenOrder extends Component {
         return(
    
             
-            <div class="card">
+            <div className="card text-center">
             {this.state.ordersKitch.map((orders, i) =>
-            <div class="card-body">
-                <h5 class="card-title">Orden #{i+1}</h5>
+            <div className="card-body">
+                <h5 className="card-title">Orden #{i+1}</h5>
                 <div>
                     {orders.map((item, i)=>
                     <div>
-                        <p class="card-text"></p>
-                        <a class="card-link">{item.item}</a>
+                        <p className="card-text"></p>
+                        <a className="card-link">{item.item}</a>
                         
                     </div>
                     )}
-                    <button id={i} onClick={(event)=> this.deleteRow(event, orders)}><i class="fas fa-trash-alt"></i></button>
+                    <button id={i} onClick={(event)=> this.deleteRow(event, orders)}><i className="fas fa-check"></i></button>
                 </div>    
                   
             </div>

@@ -107,7 +107,7 @@ class ShowMenuFb extends Component {
                                         
                                         <button className= "col-md-12" onClick={this.sumOrder}>TOTAL: $ {this.state.total}</button>
                                         <br/>
-                                        <ToKitchen order={this.state.orders} ClientName={<ClientName/>} />
+                                        <ToKitchen ClientName={<ClientName/>} />
                                     
                                 </div>  
                     

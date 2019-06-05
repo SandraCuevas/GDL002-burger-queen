@@ -19,21 +19,21 @@ class toKitchen extends React.Component {
     render() {
         return(
             <div className="container">
-                {console.log(this.props.order)}
+                {/*console.log(this.props.order)*/}
                 <button className= "col-md-12 btn btn-primary"  type="button" data-toggle="modal" data-target="#exampleModal" onClick={this.updOrderFb}>TO KITCHEN</button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Send to Kitchen</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Send to Kitchen</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             Your order is cooking right now!
                         </div>
-                        <div class="modal-footer">
+                        <div className="modal-footer">
                         </div>
                         </div>
                     </div>
